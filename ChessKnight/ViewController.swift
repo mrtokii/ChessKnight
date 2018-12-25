@@ -36,10 +36,8 @@ class ViewController: UIViewController {
             
             chessView.figures = [location]
             chessView.update()
-            print(fillingMoves(from: location))
-            chessView.figures = fillingMoves(from: location)
-            chessView.update()
-            
+            self.figures = fillingMoves(from: location)
+            print(self.figures.count)
         }
         
     }
@@ -54,24 +52,14 @@ class ViewController: UIViewController {
             newField[cell.x][cell.y] = 1
             
             let moves = validMoves(from: cell, on: field)
-            if moves.count == 0 || depth > 20 {
+            if moves.count == 0 {
                 return [cell]
             }
             
-            var maxStack: [(x: Int, y: Int)] = []
-            for move in moves  {
-                let currentStack = inspect(cell: move, field: newField, depth: depth + 1)
-                if currentStack.count > maxStack.count {
-                    maxStack = currentStack
-                }
-            }
-            
-            if maxStack.count > 20 {
-                print("found max: \(maxStack.count) on level \(depth)")
-            }
+            let inspected = inspect(cell: moves.randomElement()!, field: newField, depth: depth + 1)
             
             
-            return [cell] + maxStack
+            return [cell] + inspected
             
         }
         
@@ -112,9 +100,16 @@ class ViewController: UIViewController {
         }
         
         // ====================
-        let inspected = inspect(cell: (x: Int(start.x) - 1, y: Int(start.y) - 1), field: field, depth: 0)
+        var maxPath: [(x: Int, y: Int)] = []
+        for _ in 1...10000 {
+            let path = inspect(cell: (x: Int(start.x) - 1, y: Int(start.y) - 1), field: field, depth: 0)
+            if path.count > maxPath.count {
+                maxPath = path
+            }
+        }
+        
         var result: [CGPoint] = []
-        for point in inspected {
+        for point in maxPath {
             result.append(CGPoint(x: point.x + 1, y: point.y + 1))
         }
         
@@ -123,7 +118,16 @@ class ViewController: UIViewController {
     
     
     @IBAction func stepButton(_ sender: Any) {
-        // performing a step
+        if chessView.figures.count < self.figures.count {
+            chessView.figures.append( self.figures[chessView.figures.count] )
+        }
+        chessView.update()
+    }
+    
+    
+    @IBAction func clearButton(_ sender: Any) {
+        chessView.figures = []
+        chessView.update()
     }
     
 }

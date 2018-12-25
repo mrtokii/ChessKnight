@@ -25,8 +25,21 @@
                                     <constraint firstAttribute="width" secondItem="F9y-zS-thj" secondAttribute="height" multiplier="1:1" id="5eE-ae-YKS"/>
                                 </constraints>
                             </view>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sxZ-Cd-HO8">
+                                <rect key="frame" x="209" y="573" width="150" height="48"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" name="systemBlueColor" catalog="System" colorSpace="catalog"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                                <state key="normal" title="Clear">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="clearButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="smo-4e-Vwg"/>
+                                    <action selector="stepButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="luL-YH-JzN"/>
+                                </connections>
+                            </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="d2u-7t-YC5">
-                                <rect key="frame" x="113" y="573" width="150" height="48"/>
+                                <rect key="frame" x="16" y="573" width="150" height="48"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" name="systemBlueColor" catalog="System" colorSpace="catalog"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="30"/>
