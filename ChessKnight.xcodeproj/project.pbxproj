@@ -12,6 +12,7 @@
 		D7B8A69321D2A7C200D441E4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D7B8A69121D2A7C200D441E4 /* Main.storyboard */; };
 		D7B8A69521D2A7C400D441E4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D7B8A69421D2A7C400D441E4 /* Assets.xcassets */; };
 		D7B8A69821D2A7C400D441E4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D7B8A69621D2A7C400D441E4 /* LaunchScreen.storyboard */; };
+		D7B8A6A021D2B11000D441E4 /* ChessBoardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7B8A69F21D2B11000D441E4 /* ChessBoardView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +23,7 @@
 		D7B8A69421D2A7C400D441E4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D7B8A69721D2A7C400D441E4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		D7B8A69921D2A7C400D441E4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D7B8A69F21D2B11000D441E4 /* ChessBoardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChessBoardView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,6 +58,7 @@
 			children = (
 				D7B8A68D21D2A7C200D441E4 /* AppDelegate.swift */,
 				D7B8A68F21D2A7C200D441E4 /* ViewController.swift */,
+				D7B8A69F21D2B11000D441E4 /* ChessBoardView.swift */,
 				D7B8A69121D2A7C200D441E4 /* Main.storyboard */,
 				D7B8A69421D2A7C400D441E4 /* Assets.xcassets */,
 				D7B8A69621D2A7C400D441E4 /* LaunchScreen.storyboard */,
@@ -136,6 +139,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D7B8A69021D2A7C200D441E4 /* ViewController.swift in Sources */,
+				D7B8A6A021D2B11000D441E4 /* ChessBoardView.swift in Sources */,
 				D7B8A68E21D2A7C200D441E4 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -283,6 +287,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 4LZJ6YD33X;
 				INFOPLIST_FILE = ChessKnight/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -300,6 +305,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 4LZJ6YD33X;
 				INFOPLIST_FILE = ChessKnight/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
