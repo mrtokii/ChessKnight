@@ -56,10 +56,15 @@ class ViewController: UIViewController {
                 return [cell]
             }
             
-            let inspected = inspect(cell: moves.randomElement()!, field: newField, depth: depth + 1)
+            var maxInspected: [(x: Int, y: Int)] = []
+            for _ in 1...2 {
+                let inspected = inspect(cell: moves.randomElement()!, field: newField, depth: depth + 1)
+                if inspected.count > maxInspected.count {
+                    maxInspected = inspected
+                }
+            }
             
-            
-            return [cell] + inspected
+            return [cell] + maxInspected
             
         }
         
@@ -101,7 +106,7 @@ class ViewController: UIViewController {
         
         // ====================
         var maxPath: [(x: Int, y: Int)] = []
-        for _ in 1...10000 {
+        for _ in 1...1 {
             let path = inspect(cell: (x: Int(start.x) - 1, y: Int(start.y) - 1), field: field, depth: 0)
             if path.count > maxPath.count {
                 maxPath = path

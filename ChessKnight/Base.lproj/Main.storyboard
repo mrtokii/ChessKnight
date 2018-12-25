@@ -19,41 +19,47 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="F9y-zS-thj" customClass="ChessBoardView" customModule="ChessKnight" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="142" width="375" height="375"/>
+                                <rect key="frame" x="0.0" y="80" width="375" height="375"/>
                                 <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="F9y-zS-thj" secondAttribute="height" multiplier="1:1" id="5eE-ae-YKS"/>
                                 </constraints>
                             </view>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sxZ-Cd-HO8">
-                                <rect key="frame" x="209" y="573" width="150" height="48"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" name="systemBlueColor" catalog="System" colorSpace="catalog"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="30"/>
-                                <state key="normal" title="Clear">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                </state>
-                                <connections>
-                                    <action selector="clearButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="smo-4e-Vwg"/>
-                                    <action selector="stepButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="luL-YH-JzN"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="d2u-7t-YC5">
-                                <rect key="frame" x="16" y="573" width="150" height="48"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" name="systemBlueColor" catalog="System" colorSpace="catalog"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="30"/>
-                                <state key="normal" title="Step">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                </state>
-                                <connections>
-                                    <action selector="stepButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="2nR-uH-Fze"/>
-                                </connections>
-                            </button>
+                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="Ai4-wo-5pN">
+                                <rect key="frame" x="0.0" y="385" width="375" height="48"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="d2u-7t-YC5">
+                                        <rect key="frame" x="0.0" y="0.0" width="182.5" height="48"/>
+                                        <color key="backgroundColor" name="systemBlueColor" catalog="System" colorSpace="catalog"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                                        <state key="normal" title="Step">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="stepButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="2nR-uH-Fze"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sxZ-Cd-HO8">
+                                        <rect key="frame" x="192.5" y="0.0" width="182.5" height="48"/>
+                                        <color key="backgroundColor" name="systemBlueColor" catalog="System" colorSpace="catalog"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                                        <state key="normal" title="Clear">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="clearButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="smo-4e-Vwg"/>
+                                            <action selector="stepButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="luL-YH-JzN"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                            </stackView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
+                            <constraint firstItem="Ai4-wo-5pN" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="0LQ-46-Odc"/>
+                            <constraint firstItem="Ai4-wo-5pN" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="14O-iM-TX1"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="F9y-zS-thj" secondAttribute="bottom" constant="150" id="9w9-N9-sWi"/>
+                            <constraint firstItem="Ai4-wo-5pN" firstAttribute="top" secondItem="F9y-zS-thj" secondAttribute="bottom" constant="10" id="ryU-lD-nRO"/>
                             <constraint firstItem="F9y-zS-thj" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="wZm-LP-KZ2"/>
                             <constraint firstItem="F9y-zS-thj" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="yDf-DD-dGA"/>
                         </constraints>
@@ -65,7 +71,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="136.80000000000001" y="133.5832083958021"/>
+            <point key="canvasLocation" x="136.23188405797103" y="133.25892857142856"/>
         </scene>
     </scenes>
 </document>

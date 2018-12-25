@@ -11,7 +11,7 @@ import SpriteKit
 
 class ChessBoardView: SKView {
 
-    var primaryColor: UIColor   = .lightGray
+    var primaryColor: UIColor   = .darkGray
     var secondaryColor: UIColor = .black
     var figureColor: UIColor    = .red
     var mainScene: SKScene      = SKScene()
@@ -79,18 +79,28 @@ class ChessBoardView: SKView {
     }
     
     private func drawFigures(_ figures: [CGPoint]) {
+        let margin = 3
+        
         let cellWidth:  CGFloat = self.mainScene.size.width / CGFloat(8)
         let cellHeight: CGFloat = self.mainScene.size.height / CGFloat(8)
-        let cellSize = CGSize(width: cellWidth, height: cellHeight)
+        //let cellSize = CGSize(width: cellWidth, height: cellHeight)
+        let cubeSize = CGSize(width: cellWidth - CGFloat(margin * 2), height: cellHeight - CGFloat(margin * 2))
         
-        for figure in figures {
-            let cubeNode = SKSpriteNode(color: self.figureColor, size: cellSize)
+        for (index, figure) in figures.enumerated() {
+            let cubeNode = SKSpriteNode(color: self.figureColor, size: cubeSize)
             let cubeX = CGFloat(figure.x - 1) *  cellWidth + cellWidth  / 2
             let cubeY = CGFloat(8 - figure.y) * cellHeight + cellHeight / 2
-            
             cubeNode.position = CGPoint(x: cubeX, y: cubeY)
             
-            mainScene.addChild(cubeNode)
+            let labelNode = SKLabelNode(fontNamed: "Arial")
+            labelNode.text = String(index)
+            //labelNode.fontSize = 30
+            labelNode.fontColor = SKColor.yellow
+            labelNode.verticalAlignmentMode = .center
+            labelNode.position = CGPoint(x: cubeX, y: cubeY)
+            
+            //mainScene.addChild(cubeNode)
+            mainScene.addChild(labelNode)
         }
         
     }
