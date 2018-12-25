@@ -11,27 +11,20 @@ import SpriteKit
 
 class ChessBoardView: SKView {
 
-    var primaryColor: UIColor
-    var secondaryColor: UIColor
-    var figureColor: UIColor
-    var mainScene: SKScene
-    var figures: [CGPoint]
+    var primaryColor: UIColor   = .lightGray
+    var secondaryColor: UIColor = .black
+    var figureColor: UIColor    = .red
+    var mainScene: SKScene      = SKScene()
+    var figures: [CGPoint]      = []
     
     override init(frame: CGRect) {
-        primaryColor = .lightGray
-        secondaryColor = .black
-        figureColor = .red
-        
-        mainScene = SKScene()
-        figures = []
-        
         super.init(frame: frame)
         
         update()
     }
     
     required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+        super.init(coder: aDecoder)
     }
     
     func update() {
