@@ -14,10 +14,12 @@ class ViewController: UIViewController {
     @IBOutlet weak var chessView: ChessBoardView!
     //let chessView = ChessBoardView()
     
-    var figures = [CGPoint]()
+    var figures = [CGPoint(x: 3, y: 4)]
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        chessView.figures = self.figures
+        fillMoves()
         chessView.update()
         
         let tapGestureRecognizer = UITapGestureRecognizer(target: self, action:  #selector (self.chessBoardTapped(_:)))
@@ -34,39 +36,29 @@ class ViewController: UIViewController {
                 figures.append(location)
             }*/
             
-            chessView.figures = [location]
+            self.figures = [location]
+            chessView.figures = self.figures
             chessView.update()
-            self.figures = fillingMoves(from: location)
-            print(self.figures.count)
+            
+            fillMoves()
+            
         }
+        
+    }
+    
+    func fillMoves() {
+        self.figures = fillingMoves(from: self.figures.first!)
+        print(self.figures.count)
         
     }
     
     func fillingMoves(from start: CGPoint) -> [CGPoint] {
         
         // [x][y]
-        let field = Array(repeating: Array(repeating: 0, count: 8), count: 8)
+        var field = Array(repeating: Array(repeating: 0, count: 8), count: 8)
+        var currentCell = (x: Int(start.x), y: Int(start.y))
+        var path: [(x: Int, y: Int)] = [currentCell]
         
-        func inspect( cell: (x: Int, y: Int), field: [[Int]], depth: Int ) -> [(x: Int, y: Int)] {
-            var newField = field
-            newField[cell.x][cell.y] = 1
-            
-            let moves = validMoves(from: cell, on: field)
-            if moves.count == 0 {
-                return [cell]
-            }
-            
-            var maxInspected: [(x: Int, y: Int)] = []
-            for _ in 1...2 {
-                let inspected = inspect(cell: moves.randomElement()!, field: newField, depth: depth + 1)
-                if inspected.count > maxInspected.count {
-                    maxInspected = inspected
-                }
-            }
-            
-            return [cell] + maxInspected
-            
-        }
         
         // valid moves list from the given cell
         func validMoves( from: (x: Int, y: Int), on field: [[Int]] ) -> [(x: Int, y: Int)] {
@@ -85,7 +77,7 @@ class ViewController: UIViewController {
             ]
             
             for option in possibleOptions {
-                if inBounds(option) && field[x][y] == 0 {
+                if inBounds(option) && field[option.0 - 1][option.1 - 1] == 0 {
                     validOptions.append(option)
                 }
             }
@@ -95,8 +87,8 @@ class ViewController: UIViewController {
         
         // checks if the point is still within the board
         func inBounds(_ point: (x: Int, y: Int) ) -> Bool {
-            if 0 ... 7 ~= point.x &&
-               0 ... 7 ~= point.y
+            if 1 ... 8 ~= point.x &&
+               1 ... 8 ~= point.y
             {
                 return true
             } else {
@@ -105,17 +97,30 @@ class ViewController: UIViewController {
         }
         
         // ====================
-        var maxPath: [(x: Int, y: Int)] = []
-        for _ in 1...1 {
-            let path = inspect(cell: (x: Int(start.x) - 1, y: Int(start.y) - 1), field: field, depth: 0)
-            if path.count > maxPath.count {
-                maxPath = path
+ 
+        var moves = validMoves(from: (x: currentCell.x, y: currentCell.y), on: field)
+        while moves.count > 0 {
+            field[currentCell.x - 1][currentCell.y - 1] = 1
+            
+            var nextMove = moves.first!
+            var minCount = 8
+            for move in moves {
+                let peek = validMoves(from: (x: move.x, y: move.y), on: field).count
+                if peek < minCount {
+                    minCount = peek
+                    nextMove = move
+                }
             }
+            
+            path.append(nextMove)
+            currentCell = (x: nextMove.x, y: nextMove.y)
+            moves = validMoves(from: (x: currentCell.x, y: currentCell.y), on: field)
         }
         
+        
         var result: [CGPoint] = []
-        for point in maxPath {
-            result.append(CGPoint(x: point.x + 1, y: point.y + 1))
+        for point in path {
+            result.append(CGPoint(x: point.x, y: point.y))
         }
         
         return result
@@ -130,8 +135,19 @@ class ViewController: UIViewController {
     }
     
     
+    @IBAction func runButton(_ sender: Any) {
+        if self.figures.count > 0 {
+            chessView.figures = self.figures
+        }
+        
+        chessView.update()
+    }
+    
     @IBAction func clearButton(_ sender: Any) {
-        chessView.figures = []
+        if let firstFigureOnBoard = chessView.figures.first {
+            chessView.figures = [firstFigureOnBoard]
+        }
+        
         chessView.update()
     }
     

@@ -93,7 +93,7 @@ class ChessBoardView: SKView {
             cubeNode.position = CGPoint(x: cubeX, y: cubeY)
             
             let labelNode = SKLabelNode(fontNamed: "Arial")
-            labelNode.text = String(index)
+            labelNode.text = String(index + 1)
             //labelNode.fontSize = 30
             labelNode.fontColor = SKColor.yellow
             labelNode.verticalAlignmentMode = .center
