@@ -12,7 +12,6 @@ import SpriteKit
 class ViewController: UIViewController {
 
     @IBOutlet weak var chessView: ChessBoardView!
-    //let chessView = ChessBoardView()
     
     var figures = [CGPoint(x: 3, y: 4)]
     
@@ -30,12 +29,6 @@ class ViewController: UIViewController {
         if let location = chessView.touchedCell(in: sender.location(in: chessView) ) {
             print("tap \(location)")
             
-            /*if figures.contains(location) {
-                figures.remove(at: figures.firstIndex(of: location)! )
-            } else {
-                figures.append(location)
-            }*/
-            
             self.figures = [location]
             chessView.figures = self.figures
             chessView.update()
@@ -49,7 +42,6 @@ class ViewController: UIViewController {
     func fillMoves() {
         self.figures = fillingMoves(from: self.figures.first!)
         print(self.figures.count)
-        
     }
     
     func fillingMoves(from start: CGPoint) -> [CGPoint] {
@@ -58,7 +50,6 @@ class ViewController: UIViewController {
         var field = Array(repeating: Array(repeating: 0, count: 8), count: 8)
         var currentCell = (x: Int(start.x), y: Int(start.y))
         var path: [(x: Int, y: Int)] = [currentCell]
-        
         
         // valid moves list from the given cell
         func validMoves( from: (x: Int, y: Int), on field: [[Int]] ) -> [(x: Int, y: Int)] {
@@ -116,7 +107,6 @@ class ViewController: UIViewController {
             currentCell = (x: nextMove.x, y: nextMove.y)
             moves = validMoves(from: (x: currentCell.x, y: currentCell.y), on: field)
         }
-        
         
         var result: [CGPoint] = []
         for point in path {
